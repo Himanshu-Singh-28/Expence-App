@@ -1,0 +1,264 @@
+.background-login{
+    width: 50%;
+    height: 780px;
+    background-color: rgba(18, 1, 1, 0.811);
+    position: relative;
+}
+.shape-login{
+    height: 150px;
+    width: 150px;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.shape-login:nth-child(1){
+    background: linear-gradient(
+        #18ad67,
+        #f6ef23
+    );
+    left: 24%;
+    top: 5%;
+}
+.shape-login:nth-child(2){
+    background: linear-gradient(
+        #ab3b9a,
+        #09aadb
+    );
+    bottom: 0%;
+    right: 10%;
+}
+.background-login form{
+    height: 60%;
+    width: 40%;
+    background: rgba(102, 149, 188, 0.251);
+    position: relative;
+    top: 16%;
+    left: 32%;
+    bottom: auto;
+    border-radius: 10px;
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 50px 35px;
+}
+.background-login form *{
+    font-family: 'Poppins',sans-serif;
+    color: #0e0c0c;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+.background-login form h3{
+  text-transform: uppercase;
+  background: rgba(238, 42, 3, 0);
+  margin: 0 auto;
+  width:max-content;
+  opacity: 0.453;
+  color: white;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 42px;
+  
+}
+.background-login input{
+  background-color: rgba(248, 249, 250, 0.9);
+    display: block;
+    height: 40px;
+    width: 100%;
+    border-radius: 5px;
+    position: relative;
+    left: 0;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+}
+.background-login button{
+    margin-top: 50px;
+    width: 100%;
+    background-color: #2f2fdcb8;
+    color: #ecebf1;
+    padding: 15px 0;
+    position: relative;
+    left: 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 40px rgba(102, 88, 211, 0.6);
+
+}
+.background-login label{
+  background: rgba(238,42,3,0);
+  color: white;
+  display: block;
+  width: max-content;
+  margin-top: 30px;
+  font-size: 16px;
+  font-weight: 500;
+}
+.background-login button:hover{
+  font-size: 20px;
+  transform: scale(1.03,1.03);
+  background-color: rgba(149, 188, 8, 0.6);
+  box-shadow: 0 0 40px rgba(40, 171, 82, 0.6);
+
+}
+
+.image{
+    width: 100%;
+    height: 100%;
+}
+
+@media screen and (max-width:438px) {
+    .background-login{
+        width: 100%;
+    }
+    .shape-login{
+        height: 100px;
+        width: 100px;
+    }
+    .shape-login:nth-child(1){
+        left: 1%;
+        top: 10%;
+    }
+    .shape-login:nth-child(2){
+        bottom: 18%;
+        right: 2%;
+    }
+    .background-login form{
+        height: 50%;
+        width: 60%;
+        left: 12%;
+        padding-top: 15px;
+        padding-left: 20px;
+    }
+    .background-login form h3{
+       font-size: medium; 
+    }
+    .background-login form label{
+       font-size: medium; 
+    }
+    .background-login form input{
+       font-size: medium; 
+       padding-top:0;
+    }
+    .background-login form button{
+       font-size: medium;
+       transform: scale(0.9); 
+       margin-top: 30px;
+    }
+}
+@media screen and (min-width:438px) and (max-width:728px) {
+    .background-login{
+        width: 100%;
+    }
+    .shape-login{
+        height: 150px;
+        width: 150px;
+    }
+    .shape-login:nth-child(1){
+        left: 10%;
+        top: 10%;
+    }
+    .shape-login:nth-child(2){
+        bottom: 18%;
+        right: 13%;
+    }
+    .background-login form{
+        height: 50%;
+        width: 50%;
+        left: 20%;
+        padding-top: 15px;
+        padding-left: 20px;
+    }
+    .background-login form h3{
+       font-size: medium; 
+    }
+    .background-login form label{
+       font-size: medium; 
+    }
+    .background-login form input{
+       font-size: medium; 
+       padding-top:0;
+    }
+    .background-login form button{
+       font-size: medium;
+       transform: scale(0.9); 
+       margin-top: 30px;
+    }
+}
+@media screen and (min-width:728px) and (max-width:928px) {
+    .background-login{
+        width: 100%;
+    }
+    .shape-login{
+        height: 150px;
+        width: 150px;
+    }
+    .shape-login:nth-child(1){
+        left: 18%;
+        top: 5%;
+    }
+    .shape-login:nth-child(2){
+        bottom: 15%;
+        right: 17%;
+    }
+    .background-login form{
+        height: 50%;
+        width: 40%;
+        left: 27%;
+        padding-top: 15px;
+        padding-left: 20px;
+    }
+    .background-login form h3{
+       font-size: medium; 
+    }
+    .background-login form label{
+       font-size: medium; 
+    }
+    .background-login form input{
+       font-size: medium; 
+       padding-top:0;
+    }
+    .background-login form button{
+       font-size: medium;
+       transform: scale(0.9); 
+       margin-top: 30px;
+    }
+}
+@media screen and (min-width:928px) and (max-width:1128px) {
+    .shape-login{
+        height: 100px;
+        width: 100px;
+    }
+    .shape-login:nth-child(1){
+        left: 15%;
+        top: 10%;
+    }
+    .shape-login:nth-child(2){
+        bottom: 18%;
+        right: 10%;
+    }
+    .background-login form{
+        height: 50%;
+        width: 40%;
+        left: 27%;
+        padding-top: 15px;
+        padding-left: 20px;
+    }
+    .background-login form h3{
+       font-size: medium; 
+    }
+    .background-login form label{
+       font-size: medium; 
+    }
+    .background-login form input{
+       font-size: medium; 
+       padding-top:0;
+    }
+    .background-login form button{
+       font-size: medium;
+       transform: scale(0.9); 
+       margin-top: 30px;
+    }
+}

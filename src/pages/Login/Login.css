@@ -1,0 +1,287 @@
+.loginbox-container{
+    display: flex;
+}
+.background{
+      width: 50%;
+      height: 780px;
+      background-color: rgba(223, 228, 232, 0.337);
+      position: relative;
+      top: 0px;
+      margin: 0;
+      border: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+  .shape{
+      height: 150px;
+      width: 150px;
+      position: absolute;
+      border-radius: 50%;
+  }
+ 
+  .shape:nth-child(1){
+      background: linear-gradient(
+          #1845ad,
+          #23a2f6
+      );
+      left: 22%;
+      top: 3%;
+  }
+  .shape:nth-child(2){
+      background: linear-gradient(
+          #ff512f,
+          #f09819
+      );
+      bottom: 9%;
+      right: 20%;
+  }
+  .background form{
+      height: 50%;
+      width: 40%;
+      background: rgba(220, 156, 143, 0.151);
+      position: relative;
+      top: 14%;
+      bottom: auto;
+      border-radius: 10px;
+      border: 2px solid rgba(255,255,255,0.1);
+      box-shadow: 0 0 40px rgba(8, 7, 16, 0.463);
+      padding: 50px 35px;
+  }
+  .background form *{
+      font-family: 'Poppins',sans-serif;
+      color: #0e0c0c;
+      letter-spacing: 0.5px;
+      outline: none;
+      border: none;
+  }
+  .background form h3{
+    background: rgba(238, 42, 3, 0);
+    margin: 0 auto;
+    width:max-content;
+    opacity: 0.453;
+    color: white;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    
+  }
+  .background input{
+    background-color: rgba(248, 249, 250, 0.9);
+      display: block;
+      height: 40px;
+      width: 100%;
+      position: relative;
+      left: 0;
+      border-radius: 5px;
+      padding: 0 10px;
+      margin-top: 8px;
+      font-size: 14px;
+      font-weight: 300;
+  }
+  .background button{
+      margin-top: 50px;
+      width: 100%;
+      background-color: #2f2fdcb8;
+      color: #ecebf1;
+      padding: 15px 0;
+      font-size: 18px;
+      position: relative;
+      left: 0;
+      font-weight: 600;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0 0 40px rgba(102, 88, 211, 0.6);
+
+  }
+  .background label{
+    background: rgba(238,42,3,0);
+    color: white;
+    display: block;
+    width: max-content;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
+}
+.background button:hover{
+    display: block;
+    font-size: 20px;
+    background-color: rgba(11, 184, 17,0.6);
+    box-shadow: 0 0 40px rgba(40, 171, 82, 0.6);
+
+}
+
+.img-container{
+    width: 50%;
+    height: 780px;
+    opacity: 0.8;
+    filter: saturate(80%) brightness(80%) contrast(90%);
+}
+
+
+
+
+
+@media screen and (max-width:438px) {
+    .background{
+        width: 100%;
+    }
+    .shape{
+        height: 100px;
+        width: 100px;
+    }
+    .shape:nth-child(1){
+        left: 1%;
+        top: 10%;
+    }
+    .shape:nth-child(2){
+        bottom: 30%;
+        right: 2%;
+    }
+    .background form{
+        height: 40%;
+        width: 60%;
+        /* left: 12%; */
+        padding-top: 15px;
+        padding-left: 20px;
+    }
+    .background form h3{
+       font-size: small; 
+    }
+    .background form label{
+       font-size:small; 
+    }
+    .background form input{
+       font-size:small; 
+       padding-top:0;
+    }
+    .background form button{
+       font-size:small;
+       transform: scale(0.9); 
+       margin-top: 30px;
+    }
+    .img-container{
+        display: none;
+    }
+}
+@media screen and (min-width:438px) and (max-width:728px) {
+    
+    .background{
+        width: 100%;
+    }
+    .shape{
+        height: 150px;
+        width: 150px;
+    }
+    .shape:nth-child(1){
+        left: 8%;
+        top: 5%;
+    }
+    .shape:nth-child(2){
+        bottom: 25%;
+        right: 2%;
+    }
+    .background form{
+        height: 40%;
+        width: 50%;
+        /* left: 20%; */
+        padding-top: 15px;
+        padding-left: 20px;
+    }
+    .background form h3{
+       font-size: medium; 
+    }
+    .background form label{
+       font-size: medium; 
+    }
+    .background form input{
+       font-size: medium; 
+       padding-top:0;
+    }
+    .background form button{
+       font-size: medium;
+       transform: scale(0.9); 
+       margin-top: 30px;
+    }
+    .img-container{
+        display: none;
+    }
+}
+@media screen and (min-width:728px) and (max-width:928px) {
+    .background{
+        width: 100%;
+    }
+    .shape{
+        height: 150px;
+        width: 150px;
+    }
+    .shape:nth-child(1){
+        left: 15%;
+        top: 5%;
+    }
+    .shape:nth-child(2){
+        bottom: 23%;
+        right: 15%;
+    }
+    .background form{
+        height: 40%;
+        width: 40%;
+        /* left: 27%; */
+        padding-top: 15px;
+        padding-left: 20px;
+    }
+    .background form h3{
+       font-size: medium; 
+    }
+    .background form label{
+       font-size: medium; 
+    }
+    .background form input{
+       font-size: medium; 
+       padding-top:0;
+    }
+    .background form button{
+       font-size: medium;
+       transform: scale(0.9); 
+       margin-top: 30px;
+    }
+    .img-container{
+        display: none;
+    }
+}
+@media screen and (min-width:928px) and (max-width:1128px) {
+    .shape{
+        height: 150px;
+        width: 150px;
+    }
+    .shape:nth-child(1){
+        left: 15%;
+        top: 5%;
+    }
+    .shape:nth-child(2){
+        bottom: 23%;
+        right: 15%;
+    }
+    .background form{
+        height: 40%;
+        width: 40%;
+        /* left: 27%; */
+        padding-top: 15px;
+        padding-left: 20px;
+    }
+    .background form h3{
+       font-size: medium; 
+    }
+    .background form label{
+       font-size: medium; 
+    }
+    .background form input{
+       font-size: medium; 
+       padding-top:0;
+    }
+    .background form button{
+       font-size: medium;
+       transform: scale(0.9); 
+       margin-top: 30px;
+    }
+}
