@@ -34,7 +34,7 @@ const Register = () => {
   return (
         <div className='loginbox-container'>
             <div className="img-container">
-                <img src="../../../public/Expence-image.jpg" className='image'/>
+                <img src="Expence-image.jpg" className='image'/>
             </div>
              <section className='background-login'>
             <div className="shape-login"></div>

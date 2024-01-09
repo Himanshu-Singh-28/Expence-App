@@ -40,7 +40,7 @@ const Login = () => {
   return (
     <div className="loginbox-container">
       <div className="img-container">
-        <img src="../../../public/money.webp" alt="" className="image" />
+        <img src="money.webp" alt="" className="image" />
       </div>
       <div className="background">
         <div className="shape"></div>
