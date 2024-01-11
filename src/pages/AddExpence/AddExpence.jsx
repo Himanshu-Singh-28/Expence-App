@@ -36,13 +36,13 @@ const AddExpence = () => {
         { withCredentials: true }
       )
       .then((res) => {
-        toast.success(res.data.message);
+        toast.success(res.data.message,{duration:1000});
         const dat=new Date(date).toDateString();
         const a=[...arr,{title:title,amount:amount,date:dat,type:type}];
         setarr(a);
       })
       .catch((error) => {
-        toast.error(error.response.data.message);
+        toast.error(error.response.data.message,{duration:1000});
       });
   };
 
@@ -61,9 +61,8 @@ const AddExpence = () => {
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
         />
-        <input type="date" onChange={(e) => setdate(e.target.value)} />
+        <input type="date" value={date} onChange={(e) => setdate(e.target.value)} />
         <select
-          value={date}
           onChange={(e) => {
             setType(e.target.value);
           }}

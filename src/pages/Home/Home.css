@@ -11,6 +11,7 @@
 .home-container-box{
     width:60%;
     max-width: 60rem;
+    max-height: 80%;
     position: relative;
     top: 3rem;
     bottom: 10%;
@@ -18,16 +19,54 @@
     box-shadow: 0 0 40px 2px rgba(191, 207, 136, 0.511);
     overflow-y:auto;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     >h3{
         color: white;
         width: max-content;
-        position: relative;
-        left: 44%;
         background-color: rgba(204, 240, 121, 0);
         opacity: 0.8;
     }
 }
+.add-btn{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: rgba(62, 224, 70, 0.415);
+    position: fixed;
+    top:70%;
+    right: 10%;
+    display: flex;
+    z-index: 100;
+    flex-direction: column;
+    align-items: center;
+    >:nth-child(1){
+        position: relative;
+        top: 44%;
+        left: 0%;
+        height: 3px;
+        width: 30px;
+        background-color: rgba(255, 255, 255, 0.644);
+        border-radius: 2px;
+    }
+    >:nth-child(2){
+        position: relative;
+        top: 39%;
+        height: 3px;
+        width: 30px;
+        background-color: rgba(255, 255, 255, 0.644);
+        transform: rotate(90deg);
+        border-radius: 2px;
+
+    }
+}
 @media screen and (max-width:280px) {
+    .add-btn{
+        transform: scale(0.4);
+        top: 90%;
+        right: 0%;
+    }
     .home-container-box{
         top: 6%;
     }
@@ -36,30 +75,31 @@
     }
 }
 @media screen and (min-width:280px) and (max-width: 468px){
+    .add-btn{
+        transform: scale(0.7);
+        top: 80%;
+        right: 3%;
+    }
     .home-container-box{
         top: 8%;
     }
-    .home-container-box h3{
-        left: 30%;
-    }
+   
   }
 @media screen and (min-width:468px) and (max-width: 628px){
     .home-container-box{
         top: 10%;
     }
-    .home-container-box h3{
-        left: 38%;
-    }
   }
 @media screen and (min-width:628px) and (max-width: 1024px){
+    .add-btn{
+        top: 80%;
+        right: 8%;
+    }
     .home-container-box{
         top: 8%;
     }
     .home-container{
         height: 1336px;
-    }
-    .home-container-box h3{
-        left: 38%;
     }
   }
   

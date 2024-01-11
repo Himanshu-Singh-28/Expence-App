@@ -1,13 +1,16 @@
 import React, { useContext, useState } from 'react'
-import {Link} from 'react-router-dom'
+import {Link,Navigate} from 'react-router-dom'
 import { context, server } from '../../main'
 import axios from "axios"
+import toast from 'react-hot-toast';
 import './Header.css'
 
 const Header = () => {
   const {isAuth,setIsAuth,user}=useContext(context);
   const [active,setactive]=useState("Link");
   const[close,setclose]=useState("nav-menu");
+  const person=user.name;
+
 
   const navMenu=()=>{
     active==='Link'?setactive("Link nav-menu-activate"):setactive("Link");
@@ -17,7 +20,8 @@ const Header = () => {
   const logoutHandler=()=>{
     axios.get(`${server}/user/logout`,{withCredentials:true}).then((res)=>{
       setIsAuth(false);
-      console.log(res.data);
+      toast.success(res.data.message,{duration:1000});
+      toast(`Visit Again ${person}`,{position:"top-left",duration:1000});
     }).catch((error)=>{
       setIsAuth(true);
       console.log(error);
@@ -30,7 +34,8 @@ const Header = () => {
   }
   return (
     <div className='header'>
-       <h3>Expence app</h3>
+        <img src="LOGO.jpeg" alt="" className='app-logo'/>
+       <h3>Expense App</h3>
        <div id='auth-name'>{isAuth?user.name:""}</div>
         <div className={active}>
           <Link to={"/"} className='button' onClick={navMenu}>Home</Link>
@@ -39,7 +44,7 @@ const Header = () => {
             :<Link to={"/login"} className="login" onClick={navMenu}>Login</Link>
           }
           <Link to={"/register"} className='button' onClick={navMenu}>Register</Link>
-          <Link to={"/addexpence"} className='button' onClick={navMenu}>AddExpence</Link>
+          <Link to={"/addexpense"} className='button' onClick={navMenu}>AddExpense</Link>
         </div>
         <div onClick={navMenu} className={close}>
           <div className='line1'></div>

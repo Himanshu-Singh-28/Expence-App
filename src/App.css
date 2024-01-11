@@ -5,3 +5,13 @@ button:disabled{
     cursor: not-allowed;
     opacity: 0.3;
 }
+*{
+    border: none;
+}
+
+.sucess-prop{
+    width: auto;
+    height: auto;
+    color: green;
+
+}

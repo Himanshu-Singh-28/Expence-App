@@ -1,17 +1,24 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useLocation, Navigate } from "react-router-dom";
-import { server } from "../../main";
+import { context, server } from "../../main";
 import "./Edit.css";
 import toast from 'react-hot-toast';
 
 const EditExpence = () => {
-  const [nav, setNav] = useState(false);
-  const [title, setTitle] = useState("");
-  const [amount, setAmount] = useState("");
-  const [type, setType] = useState("Give");
+  const {isAuth}=useContext(context);
 
+  if(!isAuth){
+    return <Navigate replace to="/" />;
+  }
   const data = useLocation().state;
+  const d=new Date(data.date);
+  const [nav, setNav] = useState(false);
+  const [title, setTitle] = useState(data.name);
+  const [amount, setAmount] = useState(data.amount);
+  const [type, setType] = useState(data.type);
+  const [date,setDate]=useState(d);
+
   const submitHandler = (e) => {
     e.preventDefault();
     axios
@@ -25,11 +32,11 @@ const EditExpence = () => {
         { withCredentials: true }
       )
       .then((res) => {
-        toast.success(res.data.message);
+        toast.success(res.data.message,{duration:1000});
         setNav(true);
       })
       .catch((error) => {
-        toast.error(error.response.data);
+        toast.error(error.response.data,{duration:1000});
         setNav(false);
       });
   };
@@ -70,14 +77,21 @@ const EditExpence = () => {
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
           />
+          {/* <input 
+            type="date"
+            onChange={(e) => setDate(e.target.value)}
+            value={date}
+          /> */}
           <select
             onChange={(e) => {
               setType(e.target.value);
             }}
+            value={type}
           >
             <option value="Give">Give</option>
             <option value="Take">Take</option>
           </select>
+          
           <button type="submit">Edit Expense</button>
         </form>
       </div>

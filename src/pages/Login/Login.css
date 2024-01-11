@@ -47,6 +47,9 @@
       border: 2px solid rgba(255,255,255,0.1);
       box-shadow: 0 0 40px rgba(8, 7, 16, 0.463);
       padding: 50px 35px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
   }
   .background form *{
       font-family: 'Poppins',sans-serif;
@@ -210,23 +213,23 @@
 @media screen and (min-width:728px) and (max-width:928px) {
     .background{
         width: 100%;
+        height: 1334px;
     }
     .shape{
         height: 150px;
         width: 150px;
     }
     .shape:nth-child(1){
-        left: 15%;
-        top: 5%;
+        left: 17%;
+        top: 10%;
     }
     .shape:nth-child(2){
-        bottom: 23%;
-        right: 15%;
+        bottom: 45%;
+        right: 17%;
     }
     .background form{
-        height: 40%;
+        height: 30%;
         width: 40%;
-        /* left: 27%; */
         padding-top: 15px;
         padding-left: 20px;
     }
@@ -250,20 +253,26 @@
     }
 }
 @media screen and (min-width:928px) and (max-width:1128px) {
+    .img-container{
+        height: 1334px;
+    }
+    .background{
+        height: 1334px;
+    }
     .shape{
         height: 150px;
         width: 150px;
     }
     .shape:nth-child(1){
-        left: 15%;
-        top: 5%;
+        left: 10%;
+        top: 9%;
     }
     .shape:nth-child(2){
-        bottom: 23%;
-        right: 15%;
+        bottom: 49%;
+        right: 13%;
     }
     .background form{
-        height: 40%;
+        height: 25%;
         width: 40%;
         /* left: 27%; */
         padding-top: 15px;

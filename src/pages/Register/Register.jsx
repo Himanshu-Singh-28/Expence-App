@@ -17,14 +17,20 @@ const Register = () => {
         try {
             setLoading(true);
             const {data}=await axios.post(`${server}/user/register`,{name,email,password},{withCredentials:true});
-            toast.success(data.message);
-            setIsAuth(true);
-            setLoading(false);
+            if (data.success) {
+                setLoading(false);
+                toast.success(data.message,{duration:1000});
+                setIsAuth(true);
+              } else {
+                setLoading(false);
+                toast.error(data.message,{duration:1000});
+                setIsAuth(false);
+              }
             return <Navigate to={"/"}/>
 
         } catch (error) {
             setLoading(false);
-            toast.success(error.response.data.message);
+            toast.success(error.response.data.message,{duration:1000});
             setIsAuth(false);
         }
         if(isAuth){

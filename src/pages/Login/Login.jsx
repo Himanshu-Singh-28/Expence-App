@@ -1,12 +1,12 @@
 import React, { useContext, useState } from "react";
 import { context, server } from "../../main";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
+import { Navigate,Link } from "react-router-dom";
 import "./Login.css";
 import toast from 'react-hot-toast';
 
 const Login = () => {
-  const { isAuth, setIsAuth } = useContext(context);
+  const { isAuth, setIsAuth,user } = useContext(context);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -21,8 +21,9 @@ const Login = () => {
         { withCredentials: true }
       );
       if (data.success) {
-        toast.success(data.message);
         setIsAuth(true);
+        toast.success(data.message,{duration:500});
+        toast(`Welcome Back ${user.name}`,{duration:1000,position:"top-left"});
       } else {
         toast.error(data.message);
         setIsAuth(false);
@@ -66,6 +67,8 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <button disabled={loading}>Login</button>
+          <div> OR </div>
+          <Link to={"/register"}>Sing Up</Link>
         </form>
       </div>
     </div>

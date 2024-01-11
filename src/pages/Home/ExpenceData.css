@@ -4,7 +4,6 @@
     position: relative;
     width: 80%;
     height: max-content;
-    left: 9%;
     top: 2%;
     background-color: aliceblue;
     border-radius: 10px;
@@ -122,14 +121,12 @@
 
 @media screen and (max-width:428px) {
     .expence-container{
-        left: 5%;
         font-size: x-small;
     }
 }
 @media screen and (min-width:428px) and (max-width:768px){
     .expence-container{
         margin-left: 0;
-        left: 9%;
     }
 }
 

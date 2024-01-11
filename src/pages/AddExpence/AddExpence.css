@@ -45,6 +45,7 @@
         font-size: 18px;
         font-weight: 600;
         border-radius: 5px;
+        border: none;
         cursor: pointer;
         box-shadow: 0 0 40px rgba(102, 88, 211, 0.6);
         margin-bottom: 50px;
@@ -56,7 +57,7 @@
         left: 40%;
         border: 2px solid rgba(0, 0, 0, 0.586);
         border-radius: 4px;
-        background-color: #ecebf1ae;
+        background-color: #443395ae;
         opacity: 1;
         color: white;
     }
@@ -134,7 +135,7 @@
     width: max-content;
   }
 }
-@media screen and (max-width: 328px) {
+@media screen and (max-width: 380px) {
   .recent-container h2{
     font-size: small;
   }
@@ -166,7 +167,39 @@
     width: max-content;
   }
 }
-@media screen and (min-width:328px) and (max-width: 728px) {
+@media screen and (max-width: 380px) {
+  .recent-container h2{
+    font-size: small;
+  }
+  .recent-container{
+    width: 70%;
+  }
+  .add-container form{
+    width: 80%;
+  }
+  .add-container form input{
+    left: 10%;
+    width: 70%;
+  }
+  .add-container form select{
+    width: 30%;
+    left: 35%;
+  }
+  .add-container form button{
+    font-size: small;
+  }
+  .recent{
+    display: grid;
+    grid-template-rows: auto auto auto;
+    grid-template-columns: auto;
+    width: 90%;
+    left: 3%;
+  }
+  .recent div{
+    width: max-content;
+  }
+}
+@media screen and (min-width:380px) and (max-width: 728px) {
   .recent-container h2{
     font-size: small;
     left: 15%;

@@ -10,6 +10,7 @@ import AddExpence from './pages/AddExpence/AddExpence'
 import EditExpence from './pages/AddExpence/EditExpence'
 import './App.css';
 import {Toaster} from 'react-hot-toast';
+import Footer from './pages/Footer/Footer'
 
 function App() {
   const {isAuth,setIsAuth,setUser,user,refresh}=useContext(context);
@@ -17,7 +18,6 @@ function App() {
     axios.get(`${server}/user/myprofil`,{withCredentials:true}).then((res)=>{
       setIsAuth(true);
       setUser(res.data.user);
-      console.log(res.data);
     }).catch((error)=>{
       setIsAuth(false);
       console.log(error);
@@ -30,9 +30,10 @@ function App() {
           <Route path="/" element={<Home/>} />
           <Route path="/login" element={<Login/>}/>
           <Route path='/register' element={<Register/>}/>
-          <Route path='/addexpence' element={<AddExpence/>}/>
+          <Route path='/addexpense' element={<AddExpence/>}/>
           <Route path='/edit' element={<EditExpence/>}/>
         </Routes>
+        <Footer/>
         <Toaster/>
       </BrowserRouter>
   )
