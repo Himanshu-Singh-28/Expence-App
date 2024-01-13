@@ -49,12 +49,14 @@ const AddExpence = () => {
   return (
     <div className="add-container">
       <form onSubmit={submitHandler}>
+  
         <input
           type="text"
           placeholder="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
+        <p style={{color:"red",fontSize:"10px"}}>Add Small Title</p>
         <input
           type="number"
           placeholder="Amount"

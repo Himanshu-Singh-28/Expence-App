@@ -12,6 +12,11 @@ const Register = () => {
     const [password,setPassword]=useState("");
     const [loading, setLoading] = useState(false);
 
+    if(isAuth){
+        toast("Already Register",{duration:1000});
+        return <Navigate replace to="/" />;
+    }
+
     const submitHandler= async(e)=>{
         e.preventDefault();
         try {

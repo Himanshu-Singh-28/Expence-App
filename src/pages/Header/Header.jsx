@@ -21,7 +21,7 @@ const Header = () => {
     axios.get(`${server}/user/logout`,{withCredentials:true}).then((res)=>{
       setIsAuth(false);
       toast.success(res.data.message,{duration:1000});
-      toast(`Visit Again ${person}`,{position:"top-left",duration:1000});
+      toast(`Visit Again ${person}`,{duration:1000});
     }).catch((error)=>{
       setIsAuth(true);
       console.log(error);
@@ -44,7 +44,7 @@ const Header = () => {
             :<Link to={"/login"} className="login" onClick={navMenu}>Login</Link>
           }
           <Link to={"/register"} className='button' onClick={navMenu}>Register</Link>
-          <Link to={"/addexpense"} className='button' onClick={navMenu}>AddExpense</Link>
+          {/* <Link to={"/addexpense"} className='button' onClick={navMenu}>AddExpense</Link> */}
         </div>
         <div onClick={navMenu} className={close}>
           <div className='line1'></div>

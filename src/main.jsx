@@ -9,10 +9,10 @@ export const server="https://expence-app-3h9u.onrender.com/api/v2";
 const AppWraper=()=>{
   const [isAuth,setIsAuth]=useState(false);
   const [user,setUser]=useState('');
-  const[Expence,setExpence]=useState(null);
+  const[Expense,setExpense]=useState(null);
 
   return (
-    <context.Provider value={{isAuth,setIsAuth,user,setUser}}>
+    <context.Provider value={{isAuth,setIsAuth,user,setUser,Expense,setExpense}}>
       <App/>
     </context.Provider>
   );

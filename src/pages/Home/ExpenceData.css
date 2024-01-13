@@ -25,7 +25,9 @@
         background-color: rgba(12, 12,12,0);
         margin-left: 0;
         margin-right: auto;
-        padding: 1px;
+        width: auto;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     :nth-child(2){
         background-color: rgba(12, 12,12,0);
@@ -66,6 +68,7 @@
         margin-left: 0;
         margin-right: auto;
         padding: 1px;
+        overflow: hidden;
     }
     :nth-child(2){
         background-color: rgba(12, 12,12,0);
@@ -101,7 +104,7 @@
 }
 .title{
     font-family:'Arial', sans-serif;
-    color: blue;
+    color: rgba(246, 246, 247, 0.766);
     text-transform: capitalize;
 }
 
@@ -123,10 +126,19 @@
     .expence-container{
         font-size: x-small;
     }
+    .expence-name-container :first-child{
+        width: 60%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }
 @media screen and (min-width:428px) and (max-width:768px){
     .expence-container{
         margin-left: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }
+
+
 

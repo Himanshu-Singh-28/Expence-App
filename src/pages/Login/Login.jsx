@@ -23,7 +23,7 @@ const Login = () => {
       if (data.success) {
         setIsAuth(true);
         toast.success(data.message,{duration:500});
-        toast(`Welcome Back ${user.name}`,{duration:1000,position:"top-left"});
+        toast(`Welcome Back ${user.name}`,{duration:1000});
       } else {
         toast.error(data.message);
         setIsAuth(false);
@@ -33,6 +33,7 @@ const Login = () => {
       toast.error(error.response.data.message);
       setIsAuth(false);
       setSucess(false);
+      setLoading(false);
     }
   };
   if (isAuth) {

@@ -19,8 +19,8 @@ const ExpenceData = (props) => {
         <div className="title">{formater.format(props.amount)}</div>
       </div>
       <div className="expence-detail-container">
-        <div style={{color:props.type=="Give"?"yellow":"rgba(236, 15, 15)"}}>{date}</div>
-        <div style={{color:props.type=="Take"?"green":"red"}}>{props.type}</div>
+        <div style={{color:props.type=="Give"?"yellow":"rgba(199, 7, 68, 0.801)"}}>{date}</div>
+        <div style={{color:props.type=="Take"?"limegreen":"red"}}>{props.type}</div>
         <input
           type="checkbox"
           checked={props.isCompleted}
