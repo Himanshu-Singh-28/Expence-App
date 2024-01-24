@@ -4,9 +4,10 @@ import { context, server } from '../../main';
 import {Navigate} from 'react-router-dom'
 import './Register.css'
 import toast from 'react-hot-toast';
+import Loading from '../Loading/Loading';
 
 const Register = () => {
-    const {isAuth,setIsAuth}=useContext(context);
+    const {isAuth,setIsAuth,setClose,setactive}=useContext(context);
     const [name,setName]=useState("");
     const [email,setEmail]=useState("");
     const [password,setPassword]=useState("");
@@ -42,8 +43,12 @@ const Register = () => {
             return <Navigate to={"/"}/>
         }
     }
+
+    if(loading){
+        return <Loading open={loading}/>
+    }
   return (
-        <div className='loginbox-container'>
+        <div className='loginbox-container' onClick={()=>{setClose("nav-menu");setactive("Link")}}>
             <div className="img-container">
                 <img src="Expence-image.jpg" className='image'/>
             </div>

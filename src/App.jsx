@@ -11,9 +11,10 @@ import EditExpence from './pages/AddExpence/EditExpence'
 import './App.css';
 import {Toaster} from 'react-hot-toast';
 import Footer from './pages/Footer/Footer'
+import Loading from './pages/Loading/Loading'
 
 function App() {
-  const {isAuth,setIsAuth,setUser,user,refresh}=useContext(context);
+  const {isAuth,setIsAuth,setUser,loading}=useContext(context);
   useEffect((res)=>{
     axios.get(`${server}/user/myprofil`,{withCredentials:true}).then((res)=>{
       setIsAuth(true);
@@ -23,6 +24,9 @@ function App() {
       console.log(error);
     })
   },[isAuth]);
+  // if(loading){
+  //   return <Loading open={loading}/>
+  // }
   return (
       <BrowserRouter>
         <Header/>
@@ -32,6 +36,7 @@ function App() {
           <Route path='/register' element={<Register/>}/>
           <Route path='/addexpense' element={<AddExpence/>}/>
           <Route path='/edit' element={<EditExpence/>}/>
+          <Route path='/Loading' element={<Loading/>}/>
         </Routes>
         <Footer/>
         <Toaster/>

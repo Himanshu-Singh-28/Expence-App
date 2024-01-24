@@ -6,15 +6,13 @@ import toast from 'react-hot-toast';
 import './Header.css'
 
 const Header = () => {
-  const {isAuth,setIsAuth,user}=useContext(context);
-  const [active,setactive]=useState("Link");
-  const[close,setclose]=useState("nav-menu");
+  const {isAuth,setIsAuth,user,close,setClose,active,setactive}=useContext(context);
   const person=user.name;
 
 
   const navMenu=()=>{
     active==='Link'?setactive("Link nav-menu-activate"):setactive("Link");
-    close==="nav-menu"?setclose("nav-menu nav-closer"):setclose("nav-menu");
+    close==="nav-menu"?setClose("nav-menu nav-closer"):setClose("nav-menu");
   }
 
   const logoutHandler=()=>{
@@ -44,7 +42,7 @@ const Header = () => {
             :<Link to={"/login"} className="login" onClick={navMenu}>Login</Link>
           }
           <Link to={"/register"} className='button' onClick={navMenu}>Register</Link>
-          {/* <Link to={"/addexpense"} className='button' onClick={navMenu}>AddExpense</Link> */}
+          <Link to={"/addexpense"} className='button' onClick={navMenu}>AddExpense</Link>
         </div>
         <div onClick={navMenu} className={close}>
           <div className='line1'></div>

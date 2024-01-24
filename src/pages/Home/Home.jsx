@@ -5,13 +5,13 @@ import ExpenceData from "./ExpenceData";
 import { Navigate, Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import "./Home.css";
+import Loading from "../Loading/Loading";
 
 const Home = () => {
   const [task, setTask] = useState([]);
-  const { isAuth, setExpense } = useContext(context);
+  const { isAuth, setExpense,setClose,setactive,loading,setLoading } = useContext(context);
   const [reload, setReload] = useState(false);
   const [searchelement, setSearchelement] = useState("");
-  const [loading,setLoading]=useState(false);
 
   useEffect(() => {
     const expance = axios
@@ -19,15 +19,17 @@ const Home = () => {
       .then((res) => {
         setTask(res.data.data);
         setExpense(task);
-        setLoading(false);
       })
       .catch((error) => {
         console.log(error.response.data.message);
         setTask([]);
         setExpense(task);
-        setLoading(false);
       });
   }, [reload, isAuth]);
+
+  if(loading){
+    return <Loading open={loading}/>
+  }
   const deleteHandler = (id) => {
     setLoading(true);
     axios
@@ -42,7 +44,6 @@ const Home = () => {
         setReload(!reload);
         setLoading(false);
       });
-    console.log(reload);
   };
 
   const updateHandler = (id) => {
@@ -58,15 +59,10 @@ const Home = () => {
           setReload(!reload);
           setLoading(false);
         });
-      console.log(reload);
   }
 
-  // if(loading){
-  //   toast.loading("Loading Please Wait");
-  // }
-
   return (
-    <div className="home-container">
+    <div className="home-container" onClick={()=>{setClose("nav-menu");setactive("Link")}}>
       <div className={isAuth?"hide":"home-container-box"}>
         <h3 style={{color:"red"}}>Login / Register First to See Data</h3>
       </div>
@@ -102,6 +98,7 @@ const Home = () => {
             deleteHandler={deleteHandler}
             updateHandler={updateHandler}
             type={i.Type}
+            loading={loading}
           />
         ))}
       </div>

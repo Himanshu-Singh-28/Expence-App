@@ -25,7 +25,7 @@
           #1845ad,
           #23a2f6
       );
-      left: 22%;
+      left: 15%;
       top: 3%;
   }
   .shape:nth-child(2){
@@ -34,10 +34,10 @@
           #f09819
       );
       bottom: 9%;
-      right: 20%;
+      right: 15%;
   }
   .background form{
-      height: 50%;
+      height: 54%;
       width: 40%;
       background: rgba(220, 156, 143, 0.151);
       position: relative;
@@ -71,16 +71,14 @@
   }
   .background input{
     background-color: rgba(248, 249, 250, 0.9);
-      display: block;
-      height: 40px;
-      width: 100%;
-      position: relative;
-      left: 0;
-      border-radius: 5px;
-      padding: 0 10px;
-      margin-top: 8px;
-      font-size: 14px;
-      font-weight: 300;
+    width: 100%;
+    border-radius: 5px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 15px;
+    font-weight: 300;
   }
   .background button{
       margin-top: 50px;
@@ -120,6 +118,17 @@
     opacity: 0.8;
     filter: saturate(80%) brightness(80%) contrast(90%);
 }
+.social-container{
+    padding-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.social-container img{
+    cursor: pointer;
+}
 
 
 
@@ -138,11 +147,11 @@
         top: 10%;
     }
     .shape:nth-child(2){
-        bottom: 30%;
+        bottom: 20%;
         right: 2%;
     }
     .background form{
-        height: 40%;
+        height: 50%;
         width: 60%;
         /* left: 12%; */
         padding-top: 15px;
@@ -181,11 +190,11 @@
         top: 5%;
     }
     .shape:nth-child(2){
-        bottom: 25%;
+        bottom: 17%;
         right: 2%;
     }
     .background form{
-        height: 40%;
+        height: 50%;
         width: 50%;
         /* left: 20%; */
         padding-top: 15px;
@@ -268,11 +277,11 @@
         top: 9%;
     }
     .shape:nth-child(2){
-        bottom: 49%;
+        bottom: 44%;
         right: 13%;
     }
     .background form{
-        height: 25%;
+        height: 30%;
         width: 40%;
         /* left: 27%; */
         padding-top: 15px;

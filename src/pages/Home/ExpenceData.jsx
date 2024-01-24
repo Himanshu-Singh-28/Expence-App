@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./ExpenceData.css";
+import Loading from "../Loading/Loading";
 
 const ExpenceData = (props) => {
   const d1=props.type=="Give"?"expence-container give ticked":"expence-container take ticked";

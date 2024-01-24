@@ -1,12 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { context, server } from "../../main";
 import axios from "axios";
-import { Navigate,Link } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 import "./Login.css";
-import toast from 'react-hot-toast';
+import toast from "react-hot-toast";
+import Loading from "../Loading/Loading";
 
 const Login = () => {
-  const { isAuth, setIsAuth,user } = useContext(context);
+  const { isAuth, setIsAuth, user,setClose,setactive } = useContext(context);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -22,8 +23,8 @@ const Login = () => {
       );
       if (data.success) {
         setIsAuth(true);
-        toast.success(data.message,{duration:500});
-        toast(`Welcome Back ${user.name}`,{duration:1000});
+        toast.success(data.message, { duration: 500 });
+        toast(`Welcome Back ${user.name}`, { duration: 1000 });
       } else {
         toast.error(data.message);
         setIsAuth(false);
@@ -36,14 +37,27 @@ const Login = () => {
       setLoading(false);
     }
   };
+
+  const loginHandler = () => {
+    window.open(
+      "https://expence-app-dev1.onrender.com/api/v2/user/google/login",
+      "_self"
+    );
+  };
   if (isAuth) {
     return <Navigate to="/"></Navigate>;
   }
-  return (
-    <div className="loginbox-container">
-      <div className="img-container">
-        <img src="money.webp" alt="" className="image" />
-      </div>
+
+  if(loading){
+    return <Loading open={loading}/>
+  }
+
+  return(
+
+  <div className="loginbox-container" onClick={()=>{setClose("nav-menu");setactive("Link")}}>
+    <div className="img-container">
+    <img height={"100%"} width={"100%"} src="money.webp"/>
+    </div>
       <div className="background">
         <div className="shape"></div>
         <div className="shape"></div>
@@ -68,12 +82,17 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <button disabled={loading}>Login</button>
-          <div> OR </div>
-          <Link to={"/register"}>Sing Up</Link>
+          <div className="social-container">
+            <span>Login With: </span>
+            <img src="th.png" onClick={loginHandler}/>
+          </div>
+          <span>Don't have Account ?</span>
+          <Link to={"/register"} style={{color:"lightblue"}}>Register Here</Link>
         </form>
       </div>
+      
     </div>
-  );
-};
+  ); 
+}; 
 
 export default Login;
