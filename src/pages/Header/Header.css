@@ -79,7 +79,7 @@
   }
   .Link{
     display: flex;
-    position: absolute;
+    position: fixed;
     top: 4rem;
     right: 0px;
     width: 40%;
