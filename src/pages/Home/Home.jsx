@@ -14,7 +14,7 @@ const Home = () => {
   const [searchelement, setSearchelement] = useState("");
 
   useEffect(() => {
-    const expance = axios
+    axios
       .get(`${server}/expence/allexpence`, { withCredentials: true })
       .then((res) => {
         setTask(res.data.data);
@@ -60,7 +60,6 @@ const Home = () => {
           setLoading(false);
         });
   }
-
   return (
     <div className="home-container" onClick={()=>{setClose("nav-menu");setactive("Link")}}>
       <div className={isAuth?"hide":"home-container-box"}>

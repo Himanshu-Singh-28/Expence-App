@@ -71,6 +71,7 @@
     border: 2px solid yellow;
     box-shadow: 0 0 3px 4px rgba(0, 0, 0, 0.529);
     padding: 1rem;
+    margin-bottom: 1rem;
     max-width: 40rem;
     width: 40rem;
     top: 15%;
@@ -135,38 +136,7 @@
     width: max-content;
   }
 }
-@media screen and (max-width: 380px) {
-  .recent-container h2{
-    font-size: small;
-  }
-  .recent-container{
-    width: 70%;
-  }
-  .add-container form{
-    width: 80%;
-  }
-  .add-container form input{
-    left: 10%;
-    width: 70%;
-  }
-  .add-container form select{
-    width: 30%;
-    left: 35%;
-  }
-  .add-container form button{
-    font-size: small;
-  }
-  .recent{
-    display: grid;
-    grid-template-rows: auto auto;
-    grid-template-columns: auto auto;
-    width: 90%;
-    left: 3%;
-  }
-  .recent div{
-    width: max-content;
-  }
-}
+
 @media screen and (max-width: 380px) {
   .recent-container h2{
     font-size: small;
@@ -225,7 +195,7 @@
   .recent{
     display: grid;
     grid-template-rows: auto auto;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto;
     width: 90%;
     left: 3%;
   }

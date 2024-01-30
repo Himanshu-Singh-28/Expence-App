@@ -4,7 +4,7 @@ import App from './App.jsx'
 import './main.css'
 
 export const context=createContext({isAuth:false});
-export const server="https://expence-app-dev1.onrender.com/api/v2";
+export const server="http://localhost:5000/api/v2";
 
 const AppWraper=()=>{
   const [isAuth,setIsAuth]=useState(false);

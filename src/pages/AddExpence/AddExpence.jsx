@@ -38,8 +38,11 @@ const AddExpence = () => {
       .then((res) => {
         toast.success(res.data.message,{duration:1000});
         const dat=new Date(date).toDateString();
-        const a=[...arr,{title:title,amount:amount,date:dat,type:type}];
-        setarr(a);
+        const a1=[...arr,{title:title,amount:amount,date:dat,type:type}];
+        setarr(a1);
+        setTitle("");
+        setAmount("");
+        setdate(d);
       })
       .catch((error) => {
         toast.error(error.response.data.message,{duration:1000});
