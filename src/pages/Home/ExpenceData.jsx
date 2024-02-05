@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./ExpenceData.css";
 import Loading from "../Loading/Loading";
+import toast from 'react-hot-toast';
 
 const ExpenceData = (props) => {
   const d1=props.type=="Give"?"expence-container give ticked":"expence-container take ticked";
@@ -11,7 +12,6 @@ const ExpenceData = (props) => {
     style:'currency',
     currency:"INR",
   });
-
   const date=new Date(props.createdAt).toDateString();
   return (
     <div className={d}>
@@ -34,13 +34,12 @@ const ExpenceData = (props) => {
           onClick={() => {
             props.deleteHandler(props.id);
           }}
-          className={props.isCompleted?"home-button disabled":"home-button"}
-          disabled={props.isCompleted}
+          className="home-button"
         >
           Delete
         </button>
         <Link
-          to={props.isCompleted?"null":"/edit"}
+          to={props.isCompleted?"/":"/edit"}
           state={{
             name: props.title,
             id: props.id,
@@ -49,7 +48,7 @@ const ExpenceData = (props) => {
             isCompleted: props.isCompleted,
             date: props.createdAt,
           }}
-          // className={props.isCompleted?"home-button disabled":"home-button"}
+          onClick={props.isCompleted?()=>toast.success("Expense is Completed Can't Edit"):""}
           className="home-button"
         >
           Edit
