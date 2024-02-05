@@ -123,6 +123,7 @@
 }
 .disable{
     cursor: not-allowed;
+    pointer-events: none;
 }
 
 @media screen and (max-width:428px) {
