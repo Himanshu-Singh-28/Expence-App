@@ -19,6 +19,7 @@ const Home = () => {
       .then((res) => {
         setTask(res.data.data);
         setExpense(task);
+        console.log(res);
       })
       .catch((error) => {
         console.log(error.response.data.message);

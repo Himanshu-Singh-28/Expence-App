@@ -121,6 +121,9 @@
 .ticked{
     opacity: 0.4;
 }
+.disable{
+    cursor: not-allowed;
+}
 
 @media screen and (max-width:428px) {
     .expence-container{
