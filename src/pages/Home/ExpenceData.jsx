@@ -34,7 +34,7 @@ const ExpenceData = (props) => {
           onClick={() => {
             props.deleteHandler(props.id);
           }}
-          className={props.isCompleted?"hone-button disabled":"home-button"}
+          className={props.isCompleted?"home-button disabled":"home-button"}
           disabled={props.isCompleted}
         >
           Delete
@@ -50,7 +50,7 @@ const ExpenceData = (props) => {
             isCompleted: props.isCompleted,
             date: props.createdAt,
           }}
-          className="home-button"
+          className={props.isCompleted?"home-button disabled":"home-button"}
         >
           Edit
         </Link>
