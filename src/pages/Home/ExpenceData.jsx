@@ -40,8 +40,7 @@ const ExpenceData = (props) => {
           Delete
         </button>
         <Link
-          to={"/edit"}
-          disabled={props.isCompleted}
+          to={props.isCompleted?"null":"/edit"}
           state={{
             name: props.title,
             id: props.id,
@@ -50,7 +49,8 @@ const ExpenceData = (props) => {
             isCompleted: props.isCompleted,
             date: props.createdAt,
           }}
-          className={props.isCompleted?"home-button disabled":"home-button"}
+          // className={props.isCompleted?"home-button disabled":"home-button"}
+          className="home-button"
         >
           Edit
         </Link>
