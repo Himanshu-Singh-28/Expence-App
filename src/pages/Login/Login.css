@@ -4,7 +4,7 @@
 .background{
       width: 50%;
       height: 780px;
-      background-color: rgba(115, 208, 154, 0.421);
+      background-color: rgba(35, 58, 45, 0.421);
       position: relative;
       top: 0px;
       margin: 0;
@@ -80,7 +80,7 @@
     font-size: 15px;
     font-weight: 300;
   }
-  .background button{
+  .background .button{
       margin-top: 50px;
       width: 100%;
       background-color: #2f2fdcb8;
@@ -104,7 +104,7 @@
     font-size: 16px;
     font-weight: 500;
 }
-.background button:hover{
+.background .button:hover{
     display: block;
     font-size: 20px;
     background-color: rgba(11, 184, 17,0.6);
@@ -151,7 +151,7 @@
         right: 2%;
     }
     .background form{
-        height: 50%;
+        height: 54%;
         width: 60%;
         /* left: 12%; */
         padding-top: 15px;
@@ -194,7 +194,7 @@
         right: 2%;
     }
     .background form{
-        height: 50%;
+        height: 56%;
         width: 50%;
         /* left: 20%; */
         padding-top: 15px;
@@ -237,7 +237,7 @@
         right: 17%;
     }
     .background form{
-        height: 30%;
+        height: 33%;
         width: 40%;
         padding-top: 15px;
         padding-left: 20px;
@@ -281,7 +281,7 @@
         right: 13%;
     }
     .background form{
-        height: 30%;
+        height: 33%;
         width: 40%;
         /* left: 27%; */
         padding-top: 15px;

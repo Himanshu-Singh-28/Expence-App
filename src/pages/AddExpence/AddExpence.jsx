@@ -2,24 +2,34 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 import { context, server } from "../../main";
 import "./AddExpence.css";
-import RecentData from "./RecentData";
-import toast from 'react-hot-toast';
-import {Navigate} from 'react-router-dom';
+import toast from "react-hot-toast";
+import { Navigate } from "react-router-dom";
+import {
+  Dialog,
+  DialogTitle,
+  Select,
+  MenuItem,
+  Button,
+  IconButton,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 
-const AddExpence = () => {
-  const data=[];
-  const [arr,setarr]=useState(data);
+const AddExpence = ({ setRelode }) => {
+  const data = [];
+  const [arr, setarr] = useState(data);
   const a = new Date();
   const d = a.toISOString().substring(0, 10);
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
   const [date, setdate] = useState(d);
   const [type, setType] = useState("Give");
-  const {isAuth}=useContext(context);
+  const { isAuth, addExpense, setAddExpense } = useContext(context);
 
-  if(!isAuth){
+  if (!isAuth) {
     toast.error("Login First");
-    return <Navigate to={"/login"}/>
+    return <Navigate to={"/login"} />;
   }
 
   const submitHandler = (e) => {
@@ -36,61 +46,83 @@ const AddExpence = () => {
         { withCredentials: true }
       )
       .then((res) => {
-        toast.success(res.data.message,{duration:1000});
-        const dat=new Date(date).toDateString();
-        const a1=[...arr,{title:title,amount:amount,date:dat,type:type}];
+        toast.success(res.data.message, { duration: 1000 });
+        const dat = new Date(date).toDateString();
+        const a1 = [
+          ...arr,
+          { title: title, amount: amount, date: dat, type: type },
+        ];
         setarr(a1);
         setTitle("");
         setAmount("");
         setdate(d);
+        setAddExpense((prev) => !prev);
+        setRelode((prev) => !prev);
       })
       .catch((error) => {
-        toast.error(error.response.data.message,{duration:1000});
+        toast.error(error.response.data.message, { duration: 1000 });
       });
   };
 
   return (
-    <div className="add-container">
-      <form onSubmit={submitHandler}>
-  
-        <input
-          type="text"
-          placeholder="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <p style={{color:"red",fontSize:"10px"}}>Add Small Title</p>
-        <input
-          type="number"
-          placeholder="Amount"
-          value={amount}
-          onChange={(e) => setAmount(e.target.value)}
-        />
-        <input type="date" value={date} onChange={(e) => setdate(e.target.value)} />
-        <select
-          onChange={(e) => {
-            setType(e.target.value);
-          }}
-        >
-          <option value="Give">Give</option>
-          <option value="Take">Take</option>
-        </select>
-        <button type="submit">Add Expense</button>
-      </form>
-      <div className="recent-container">
-      <h2>Recent Expence Added</h2>
-        {
-        arr.map((i)=>
-        <RecentData 
-            title={i.title}
-            amount={i.amount}
-            date={i.date}
-            type={i.type}
-        />
-        )
-        }
-      </div>
-    </div>
+    <Dialog open={addExpense} onClose={() => setAddExpense((prev) => !prev)}>
+      <Stack
+        direction={"column"}
+        padding={"2rem"}
+        width={{ sm: "15rem", md: "25rem" }}
+        paddingTop={"0px"}
+        alignItems={"center"}
+        bgcolor={"#F8F1F1"}
+      >
+        <DialogTitle variant={{ xs: "h6", md: "h3" }} color={"#83BBEE"}>
+          Add Expense
+        </DialogTitle>
+        <form className="addExpenseForm">
+          <TextField
+            type="text"
+            label="Title"
+            size="small"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <Typography sx={{ color: "red", fontSize: "10px" }}>
+            Add Small Title
+          </Typography>
+          <TextField
+            type="number"
+            label="Amount"
+            size="small"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+          />
+          <TextField
+            type="date"
+            size="small"
+            value={date}
+            sx={{
+              margin: "1rem",
+            }}
+            onChange={(e) => setdate(e.target.value)}
+          />
+          <Select
+            value={type}
+            size="small"
+            onChange={(e) => setType(e.target.value)}
+          >
+            <MenuItem value={"Give"}>Give</MenuItem>
+            <MenuItem value={"Take"}>Take</MenuItem>
+          </Select>
+          <Button
+            type="submit"
+            variant="contained"
+            sx={{ margin: "1rem" }}
+            onClick={submitHandler}
+          >
+            Add Expense
+          </Button>
+        </form>
+      </Stack>
+    </Dialog>
   );
 };
 

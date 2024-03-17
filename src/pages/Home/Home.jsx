@@ -6,10 +6,22 @@ import { Navigate, Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import "./Home.css";
 import Loading from "../Loading/Loading";
+import AddExpence from "../AddExpence/AddExpence";
+import EditExpence from "../AddExpence/EditExpence";
 
 const Home = () => {
   const [task, setTask] = useState([]);
-  const { isAuth, setExpense,setClose,setactive,loading,setLoading } = useContext(context);
+  const {
+    isAuth,
+    setExpense,
+    setClose,
+    setactive,
+    loading,
+    setLoading,
+    addExpense,
+    setAddExpense,
+    editExpense,
+  } = useContext(context);
   const [reload, setReload] = useState(false);
   const [searchelement, setSearchelement] = useState("");
 
@@ -28,8 +40,8 @@ const Home = () => {
       });
   }, [reload, isAuth]);
 
-  if(loading){
-    return <Loading open={loading}/>
+  if (loading) {
+    return <Loading open={loading} />;
   }
   const deleteHandler = (id) => {
     setLoading(true);
@@ -49,24 +61,30 @@ const Home = () => {
 
   const updateHandler = (id) => {
     setLoading(true);
-      axios
-        .put(`${server}/expence/done/${id}`, {}, { withCredentials: true })
-        .then((res) => {
-          setReload(!reload);
-          setLoading(false);
-        })
-        .catch((error) => {
-          console.log(error);
-          setReload(!reload);
-          setLoading(false);
-        });
-  }
+    axios
+      .put(`${server}/expence/done/${id}`, {}, { withCredentials: true })
+      .then((res) => {
+        setReload(!reload);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        setReload(!reload);
+        setLoading(false);
+      });
+  };
   return (
-    <div className="home-container" onClick={()=>{setClose("nav-menu");setactive("Link")}}>
-      <div className={isAuth?"hide":"home-container-box"}>
-        <h3 style={{color:"red"}}>Login / Register First to See Data</h3>
+    <div
+      className="home-container"
+      onClick={() => {
+        setClose("nav-menu");
+        setactive("Link");
+      }}
+    >
+      <div className={isAuth ? "hide" : "home-container-box"}>
+        <h3 style={{ color: "red" }}>Login / Register First to See Data</h3>
       </div>
-      <div className={isAuth?"home-container-box":"hide"}>
+      <div className={isAuth ? "home-container-box" : "hide"}>
         <input
           id="search"
           className={"search-bar"}
@@ -77,35 +95,44 @@ const Home = () => {
           }}
         />
         <h3>All Expenses</h3>
-        {task
-        .filter((val)=>{
-          if(searchelement==""){
-            return val;
-          }else if(val.title.toLowerCase().includes(searchelement.toLowerCase())){
-            return val;
-          }else if(val.amount >= (searchelement)){
-            return val;
-          }
-        })
-        .map((i) => (
-          <ExpenceData
-            key={i._id}
-            id={i._id}
-            title={i.title}
-            amount={i.amount}
-            isCompleted={i.isCompleted}
-            createdAt={i.createdAT}
-            deleteHandler={deleteHandler}
-            updateHandler={updateHandler}
-            type={i.Type}
-            loading={loading}
-          />
-        ))}
+        <div className="expense-container">
+          {task
+            .filter((val) => {
+              if (searchelement == "") {
+                return val;
+              } else if (
+                val.title.toLowerCase().includes(searchelement.toLowerCase())
+              ) {
+                return val;
+              } else if (val.amount >= searchelement) {
+                return val;
+              }
+            })
+            .map((i) => (
+              <ExpenceData
+                key={i._id}
+                id={i._id}
+                title={i.title}
+                amount={i.amount}
+                isCompleted={i.isCompleted}
+                createdAt={i.createdAT}
+                deleteHandler={deleteHandler}
+                updateHandler={updateHandler}
+                type={i.Type}
+                loading={loading}
+              />
+            ))}
+        </div>
       </div>
-      <Link className={isAuth?"add-btn":"hide"} to={"/addexpense"}>
+      <Link
+        className={isAuth ? "add-btn" : "hide"}
+        onClick={() => setAddExpense((prev) => !prev)}
+      >
         <div></div>
         <div></div>
       </Link>
+      {addExpense && <AddExpence setRelode={setReload} />}
+      {editExpense && <EditExpence setRelode={setReload} />}
     </div>
   );
 };

@@ -1,15 +1,15 @@
 .home-container{
     width: 100%;
-    min-height: 780px;
+    min-height: 800px;
     background-color: rgba(99, 178, 226, 0.511);
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 .home-container-box{
     max-width: 60rem;
+    max-height: 80%;
     width: 60%;
     margin: 10%;
     display: flex;
@@ -68,6 +68,19 @@
     display: none;
 }
 
+.expense-container{
+    max-height: 780px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.expense-container::-webkit-scrollbar{
+    width: 2px;
+    background-color: aliceblue;
+}
+.expense-container::-webkit-scrollbar-thumb{
+    background-color: rgb(46, 128, 84);  
+}
+
 @media screen and (max-width:280px) {
     .add-btn{
         transform: scale(0.4);
@@ -104,6 +117,7 @@
     }
     .home-container-box{
         top: 8%;
+        max-height: 780px;
     }
     .home-container{
         min-height: 1336px;

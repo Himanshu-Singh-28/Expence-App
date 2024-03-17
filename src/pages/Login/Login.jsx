@@ -1,13 +1,16 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { context, server } from "../../main";
 import axios from "axios";
 import { Navigate, Link } from "react-router-dom";
 import "./Login.css";
 import toast from "react-hot-toast";
 import Loading from "../Loading/Loading";
+import { IconButton } from "@mui/material";
+// import { FcGoogle } from "react-icon";
+import GoogleIcon from "@mui/icons-material/Google";
 
 const Login = () => {
-  const { isAuth, setIsAuth, user,setClose,setactive } = useContext(context);
+  const { isAuth, setIsAuth, user, setClose, setactive } = useContext(context);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -48,16 +51,21 @@ const Login = () => {
     return <Navigate to="/"></Navigate>;
   }
 
-  if(loading){
-    return <Loading open={loading}/>
+  if (loading) {
+    return <Loading open={loading} />;
   }
 
-  return(
-
-  <div className="loginbox-container" onClick={()=>{setClose("nav-menu");setactive("Link")}}>
-    <div className="img-container">
-    <img height={"100%"} width={"100%"} src="money.webp"/>
-    </div>
+  return (
+    <div
+      className="loginbox-container"
+      onClick={() => {
+        setClose("nav-menu");
+        setactive("Link");
+      }}
+    >
+      <div className="img-container">
+        <img height={"100%"} width={"100%"} src="money.webp" />
+      </div>
       <div className="background">
         <div className="shape"></div>
         <div className="shape"></div>
@@ -81,18 +89,34 @@ const Login = () => {
             placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button disabled={loading}>Login</button>
+          <button disabled={loading} className="button">
+            Login
+          </button>
           <div className="social-container">
             <span>Login With: </span>
-            <img src="th.png" onClick={loginHandler}/>
+            <IconButton
+              onClick={loginHandler}
+              size="small"
+              sx={{
+                bgcolor: "white",
+                color: "-moz-initial",
+                "&:hover": {
+                  bgcolor: "gray",
+                },
+                margin: 0,
+              }}
+            >
+              <GoogleIcon />
+            </IconButton>
           </div>
           <span>Don't have Account ?</span>
-          <Link to={"/register"} style={{color:"lightblue"}}>Register Here</Link>
+          <Link to={"/register"} style={{ color: "lightblue" }}>
+            Register Here
+          </Link>
         </form>
       </div>
-      
     </div>
-  ); 
-}; 
+  );
+};
 
 export default Login;

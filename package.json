@@ -10,9 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@emotion/react": "^11.11.3",
+    "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
-    "@mui/material": "^5.15.6",
+    "@mui/icons-material": "^5.15.13",
+    "@mui/material": "^5.15.13",
     "axios": "^1.6.4",
     "dotenv": "^16.4.1",
     "react": "^18.2.0",
@@ -20,6 +21,7 @@
     "react-github-button": "^0.1.11",
     "react-google-button": "^0.7.2",
     "react-hot-toast": "^2.4.1",
+    "react-icon": "^1.0.0",
     "react-router-dom": "^6.21.1",
     "react-toastify": "^9.1.3"
   },

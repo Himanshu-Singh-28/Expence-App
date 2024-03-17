@@ -2,22 +2,32 @@ import axios from "axios";
 import React, { useContext, useState } from "react";
 import { useLocation, Navigate } from "react-router-dom";
 import { context, server } from "../../main";
-import "./Edit.css";
-import toast from 'react-hot-toast';
+import toast from "react-hot-toast";
+import {
+  Dialog,
+  DialogTitle,
+  Select,
+  MenuItem,
+  Button,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 
-const EditExpence = () => {
-  const {isAuth}=useContext(context);
+const EditExpence = ({ setRelode }) => {
+  const { isAuth, editExpense, setEditExpense } = useContext(context);
 
-  if(!isAuth){
+  if (!isAuth) {
     return <Navigate replace to="/" />;
   }
   const data = useLocation().state;
-  const d=new Date(data.date);
+  const d = new Date(data.date).toISOString().substring(0, 10);
+  console.log(d);
   const [nav, setNav] = useState(false);
   const [title, setTitle] = useState(data.name);
   const [amount, setAmount] = useState(data.amount);
   const [type, setType] = useState(data.type);
-  const [date,setDate]=useState(d);
+  const [date, setDate] = useState(d);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -32,11 +42,13 @@ const EditExpence = () => {
         { withCredentials: true }
       )
       .then((res) => {
-        toast.success(res.data.message,{duration:1000});
+        toast.success(res.data.message, { duration: 1000 });
         setNav(true);
+        setEditExpense((prev) => !prev);
+        setRelode((prev) => !prev);
       })
       .catch((error) => {
-        toast.error(error.response.data,{duration:1000});
+        toast.error(error.response.data, { duration: 1000 });
         setNav(false);
       });
   };
@@ -44,58 +56,65 @@ const EditExpence = () => {
   if (nav) {
     return <Navigate to="/" />;
   }
-  const formater = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "INR",
-  });
   return (
-    <div className="edit-container">
-      <div className="shape2"></div>
-      <div className="shape2"></div>
-      <div className="edit-form-container">
-        <div className="detail-container">
-          <h3>Edit Expence</h3>
-          <div>
-            <div>{data.name}</div>
-            <div>{"Amount:- " + formater.format(data.amount)}</div>
-          </div>
-          <div id="date">
-            <div>{Date(data.date).toString().substring(0, 16)}</div>
-            <div>{"Type:- "+data.type}</div>
-          </div>
-        </div>
-        <form onSubmit={submitHandler}>
-          <input
+    <Dialog open={editExpense} onClose={() => setEditExpense((prev) => !prev)}>
+      <Stack
+        direction={"column"}
+        padding={"2rem"}
+        width={{ sm: "15rem", md: "25rem" }}
+        paddingTop={"0px"}
+        alignItems={"center"}
+        bgcolor={"#F8F1F1"}
+      >
+        <DialogTitle variant={{ xs: "h6", md: "h3" }} color={"#83BBEE"}>
+          Edit Expense
+        </DialogTitle>
+        <form className="addExpenseForm">
+          <TextField
             type="text"
-            placeholder="Title"
+            label="Title"
+            size="small"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-          <input
+          <Typography sx={{ color: "red", fontSize: "10px" }}>
+            Add Small Title
+          </Typography>
+          <TextField
             type="number"
-            placeholder="Amount"
+            label="Amount"
+            size="small"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
           />
-          {/* <input 
+          <TextField
             type="date"
-            onChange={(e) => setDate(e.target.value)}
+            size="small"
             value={date}
-          /> */}
-          <select
-            onChange={(e) => {
-              setType(e.target.value);
+            sx={{
+              margin: "1rem",
             }}
+            onChange={(e) => setDate(e.target.value)}
+          />
+          <Select
             value={type}
+            size="small"
+            onChange={(e) => setType(e.target.value)}
           >
-            <option value="Give">Give</option>
-            <option value="Take">Take</option>
-          </select>
-          
-          <button type="submit">Edit Expense</button>
+            <MenuItem value={"Give"}>Give</MenuItem>
+            <MenuItem value={"Take"}>Take</MenuItem>
+          </Select>
+          <Button
+            type="submit"
+            variant="contained"
+            sx={{ margin: "1rem" }}
+            onClick={submitHandler}
+          >
+            Edit Expense
+          </Button>
         </form>
-      </div>
-    </div>
+      </Stack>
+    </Dialog>
   );
 };
 
