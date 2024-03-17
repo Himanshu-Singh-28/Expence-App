@@ -47,7 +47,8 @@ const ExpenceData = (props) => {
       <div className="expence-button-container">
         <button
           onClick={() => {
-            props.deleteHandler(props.id);
+            props.setIsDelete(prev=>!prev);
+            props.setDeleteId(props.id);
           }}
           className="home-button"
         >

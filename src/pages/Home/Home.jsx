@@ -8,6 +8,7 @@ import "./Home.css";
 import Loading from "../Loading/Loading";
 import AddExpence from "../AddExpence/AddExpence";
 import EditExpence from "../AddExpence/EditExpence";
+import DeleteHandle from "../Delete/DeleteHandle";
 
 const Home = () => {
   const [task, setTask] = useState([]);
@@ -23,6 +24,8 @@ const Home = () => {
     editExpense,
   } = useContext(context);
   const [reload, setReload] = useState(false);
+  const [isDelete, setIsDelete] = useState(false);
+  const [deleteId, setDeleteId] = useState("");
   const [searchelement, setSearchelement] = useState("");
 
   useEffect(() => {
@@ -47,6 +50,7 @@ const Home = () => {
         toast.success(res.data.message, { duration: 1000 });
         setReload(!reload);
         setLoading(false);
+        setIsDelete(false);
       })
       .catch((error) => {
         toast(error.response.data.message, { duration: 1000 });
@@ -112,10 +116,11 @@ const Home = () => {
                 amount={i.amount}
                 isCompleted={i.isCompleted}
                 createdAt={i.createdAT}
-                deleteHandler={deleteHandler}
                 updateHandler={updateHandler}
                 type={i.Type}
                 loading={loading}
+                setDeleteId={setDeleteId}
+                setIsDelete={setIsDelete}
               />
             ))}
         </div>
@@ -130,6 +135,14 @@ const Home = () => {
       {addExpense && <AddExpence setRelode={setReload} />}
       {editExpense && <EditExpence setRelode={setReload} />}
       {loading && <Loading open={loading} />}
+      {isDelete && (
+        <DeleteHandle
+          isDelete={isDelete}
+          setIsDelete={setIsDelete}
+          deleteHandler={deleteHandler}
+          deleteId={deleteId}
+        />
+      )}
     </div>
   );
 };
