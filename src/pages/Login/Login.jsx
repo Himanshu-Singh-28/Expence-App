@@ -6,7 +6,6 @@ import "./Login.css";
 import toast from "react-hot-toast";
 import Loading from "../Loading/Loading";
 import { IconButton } from "@mui/material";
-// import { FcGoogle } from "react-icon";
 import GoogleIcon from "@mui/icons-material/Google";
 
 const Login = () => {
