@@ -51,10 +51,6 @@ const Login = () => {
     return <Navigate to="/"></Navigate>;
   }
 
-  if (loading) {
-    return <Loading open={loading} />;
-  }
-
   return (
     <div
       className="loginbox-container"
@@ -115,6 +111,7 @@ const Login = () => {
           </Link>
         </form>
       </div>
+      {loading && <Loading open={loading} />}
     </div>
   );
 };

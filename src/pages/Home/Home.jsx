@@ -39,10 +39,6 @@ const Home = () => {
         setExpense(task);
       });
   }, [reload, isAuth]);
-
-  if (loading) {
-    return <Loading open={loading} />;
-  }
   const deleteHandler = (id) => {
     setLoading(true);
     axios
@@ -133,6 +129,7 @@ const Home = () => {
       </Link>
       {addExpense && <AddExpence setRelode={setReload} />}
       {editExpense && <EditExpence setRelode={setReload} />}
+      {loading && <Loading open={loading} />}
     </div>
   );
 };

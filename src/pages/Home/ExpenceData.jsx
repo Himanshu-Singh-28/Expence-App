@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./ExpenceData.css";
-import Loading from "../Loading/Loading";
 import toast from "react-hot-toast";
 import { context } from "../../main";
+import {Checkbox} from '@mui/material'
 
 const ExpenceData = (props) => {
   const d1 =
@@ -36,9 +36,10 @@ const ExpenceData = (props) => {
         <div style={{ color: props.type == "Take" ? "limegreen" : "red" }}>
           {props.type}
         </div>
-        <input
-          type="checkbox"
-          checked={props.isCompleted}
+        <Checkbox
+          size={"small"}
+          defaultChecked={props.isCompleted}
+          color="success"
           onChange={() => props.updateHandler(props.id)}
         />
       </div>

@@ -57,6 +57,8 @@
 }
 .expence-detail-container{
     position: relative;
+    display: flex;
+    align-items: center;
     top:2px;
     left: 3%;
     width: 90%;
@@ -125,6 +127,7 @@
 @media screen and (max-width:428px) {
     .expence-container{
         font-size: x-small;
+        
     }
     .expence-name-container :first-child{
         width: 60%;
@@ -133,7 +136,7 @@
     }
 }
 @media screen and (min-width:428px) and (max-width:768px){
-    .expence-container{
+    .expence-name-container :first-child{
         margin-left: 0;
         overflow: hidden;
         text-overflow: ellipsis;

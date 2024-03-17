@@ -48,44 +48,53 @@ const Register = () => {
         return <Loading open={loading}/>
     }
   return (
-        <div className='loginbox-container' onClick={()=>{setClose("nav-menu");setactive("Link")}}>
-            <div className="img-container">
-                <img src="Expence-image.jpg" className='image'/>
-            </div>
-             <section className='background-login'>
-            <div className="shape-login"></div>
-            <div className="shape-login"></div>
-            <form onSubmit={submitHandler}>
-                <h3>Register</h3>
-                <label htmlFor="Name">Name of User</label>
-                <input 
-                    id='Name'
-                    type="text" 
-                    placeholder='Name' 
-                    value={name}
-                    onChange={(e)=> setName(e.target.value)}
-                />
-                <label htmlFor="email">Email</label>
-                <input 
-                    id='email'
-                    type="email" 
-                    placeholder='Email'
-                    value={email}
-                    onChange={(e)=> setEmail(e.target.value)}
-                />
-                <label htmlFor="password">Password</label>
-                <input 
-                    id='password'
-                    type="password" 
-                    placeholder='Password'
-                    value={password}
-                    onChange={(e)=>setPassword(e.target.value)}
-                />
-                <button type='submit' onClick={submitHandler} disabled={loading}>Register</button>
-            </form>
-        </section>
-        </div>
-  )
+    <div
+      className="loginbox-container"
+      onClick={() => {
+        setClose("nav-menu");
+        setactive("Link");
+      }}
+    >
+      <div className="img-container">
+        <img src="Expence-image.jpg" className="image" />
+      </div>
+      <section className="background-login">
+        <div className="shape-login"></div>
+        <div className="shape-login"></div>
+        <form onSubmit={submitHandler}>
+          <h3>Register</h3>
+          <label htmlFor="Name">Name of User</label>
+          <input
+            id="Name"
+            type="text"
+            placeholder="Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <label htmlFor="email">Email</label>
+          <input
+            id="email"
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <label htmlFor="password">Password</label>
+          <input
+            id="password"
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button type="submit" onClick={submitHandler} disabled={loading}>
+            Register
+          </button>
+        </form>
+      </section>
+      {loading && <Loading open={loading} />}
+    </div>
+  );
 }
 
 export default Register
