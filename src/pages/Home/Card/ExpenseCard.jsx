@@ -43,7 +43,7 @@ const ExpenseCard = ({
   });
   return (
     <>
-      <Grid item xs={6} sm={4} md={3}>
+      <Grid item xs={12} sm={4} md={3} minWidth={{xs:"250px",sm:"220px",md:"190px"}}>
         <div style={{ position: "relative" }}>
           <div
             className="badge"
