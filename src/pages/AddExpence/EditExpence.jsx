@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useContext, useState } from "react";
 import { useLocation, Navigate } from "react-router-dom";
-import { context, server } from "../../main";
+import { server } from "../../main";
 import toast from "react-hot-toast";
 import {
   Dialog,
@@ -13,6 +13,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { context } from "../../ContextProvider";
 
 const EditExpence = ({ setRelode }) => {
   const { isAuth, editExpense, setEditExpense } = useContext(context);
@@ -77,8 +78,8 @@ const EditExpence = ({ setRelode }) => {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-          <Typography sx={{ color: "red", fontSize: "10px" }}>
-            Add Small Title
+          <Typography variant="caption" sx={{ color: "red", fontSize: "10px" }}>
+            {"Add Small Title"}
           </Typography>
           <TextField
             type="number"

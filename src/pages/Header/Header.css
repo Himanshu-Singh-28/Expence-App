@@ -53,7 +53,7 @@
   width: 0.6rem;
   height: 0.2rem;
   background-color: azure;
-  margin: 0.3rem;
+  margin: 0.1rem;
   padding-right: 2rem;
   transition: 0.4s ease-in;
 }
@@ -84,8 +84,8 @@
     right: 0px;
     width: 40%;
     gap: 0.1rem;
-    height: 14rem;
-    flex-direction: column;
+    height: 10rem;
+    flex-direction: column-reverse;
     align-items: center;
     background-color: rgba(0, 0, 0, 1);
     transform: translateX(100%);
@@ -99,15 +99,3 @@
 .nav-menu-activate{
   transform: translateX(0);
 }
-
-  .nav-closer .line1{
-    transform: rotate(-45deg) translate(-0.3rem,0.4rem);
-    background-color: red;
-  }
-  .nav-closer .line2{
-    opacity: 0;
-  }
-  .nav-closer .line3{
-    background-color: red;
-    transform: rotate(45deg) translate(-0.3rem,-0.4rem);
-  }

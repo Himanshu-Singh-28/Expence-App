@@ -1,10 +1,11 @@
 import axios  from 'axios';
 import React, { useContext, useState } from 'react'
-import { context, server } from '../../main';
+import { server } from '../../main';
 import {Navigate} from 'react-router-dom'
 import './Register.css'
 import toast from 'react-hot-toast';
 import Loading from '../Loading/Loading';
+import { context } from '../../ContextProvider';
 
 const Register = () => {
     const {isAuth,setIsAuth,setClose,setactive}=useContext(context);

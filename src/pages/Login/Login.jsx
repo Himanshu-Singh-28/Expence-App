@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { context, server } from "../../main";
+import { server } from "../../main";
 import axios from "axios";
 import { Navigate, Link } from "react-router-dom";
 import "./Login.css";
@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 import Loading from "../Loading/Loading";
 import { IconButton } from "@mui/material";
 import GoogleIcon from "@mui/icons-material/Google";
+import { context } from "../../ContextProvider";
 
 const Login = () => {
   const { isAuth, setIsAuth, user, setClose, setactive } = useContext(context);
@@ -41,10 +42,7 @@ const Login = () => {
   };
 
   const loginHandler = () => {
-    window.open(
-      "https://expence-app-dev1.onrender.com/api/v2/user/google/login",
-      "_self"
-    );
+    window.open("https://expence-app-dev1.onrender.com/google/login", "_self");
   };
   if (isAuth) {
     return <Navigate to="/"></Navigate>;

@@ -2,8 +2,8 @@ import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./ExpenceData.css";
 import toast from "react-hot-toast";
-import { context } from "../../main";
-import {Checkbox} from '@mui/material'
+import { Checkbox } from "@mui/material";
+import { context } from "../../../ContextProvider";
 
 const ExpenceData = (props) => {
   const d1 =
@@ -47,7 +47,7 @@ const ExpenceData = (props) => {
       <div className="expence-button-container">
         <button
           onClick={() => {
-            props.setIsDelete(prev=>!prev);
+            props.setIsDelete((prev) => !prev);
             props.setDeleteId(props.id);
           }}
           className="home-button"

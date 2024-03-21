@@ -1,9 +1,13 @@
 import React, { useContext, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
-import { context, server } from "../../main";
+import { server } from "../../main";
 import axios from "axios";
 import toast from "react-hot-toast";
 import "./Header.css";
+import { context } from "../../ContextProvider";
+import MenuIcon from "@mui/icons-material/Menu";
+import { IconButton, Avatar } from "@mui/material";
+import UserAvtar from "../utils/UserAvtar";
 
 const Header = () => {
   const {
@@ -38,40 +42,42 @@ const Header = () => {
         console.log(error);
       });
   };
-
-  const multiCall = () => {
-    logoutHandler();
-    navMenu();
-  };
   return (
     <div className="header">
       <img src="LOGO.jpeg" alt="" className="app-logo" />
       <h3>Expense App</h3>
-      <div id="auth-name">{isAuth ? user.name : ""}</div>
       <div className={active}>
         <Link to={"/"} className="button" onClick={navMenu}>
           Home
         </Link>
+
+        <Link
+          to={"/register"}
+          className="button"
+          onClick={navMenu}
+          style={{ display: isAuth ? "none" : "block" }}
+        >
+          Register
+        </Link>
+        <Link
+          className="button"
+          onClick={() => setAddExpense((prev) => !prev)}
+          style={{ display: isAuth ? "block" : "none" }}
+        >
+          AddExpense
+        </Link>
         {isAuth ? (
-          <button onClick={multiCall} className={"logout"}>
-            Logout
-          </button>
+          <>
+            <UserAvtar logoutHandler={logoutHandler} />
+          </>
         ) : (
           <Link to={"/login"} className="login" onClick={navMenu}>
             Login
           </Link>
         )}
-        <Link to={"/register"} className="button" onClick={navMenu}>
-          Register
-        </Link>
-        <Link className="button" onClick={() => setAddExpense((prev) => !prev)}>
-          AddExpense
-        </Link>
       </div>
-      <div onClick={navMenu} className={close}>
-        <div className="line1"></div>
-        <div className="line2"></div>
-        <div className="line3"></div>
+      <div onClick={navMenu} className={close} style={{ color: "white" }}>
+        <MenuIcon />
       </div>
     </div>
   );

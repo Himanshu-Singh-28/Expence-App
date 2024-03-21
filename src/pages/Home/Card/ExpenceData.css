@@ -124,6 +124,14 @@
     opacity: 0.4;
 }
 
+.badge{
+    position:absolute;
+    top:-10px;
+    right: 0;
+    border-radius: 5px;
+    padding:3px
+}
+
 @media screen and (max-width:428px) {
     .expence-container{
         font-size: x-small;

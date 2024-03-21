@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
-import { context, server } from "../../main";
+import { server } from "../../main";
 import "./AddExpence.css";
 import toast from "react-hot-toast";
 import { Navigate } from "react-router-dom";
@@ -10,11 +10,11 @@ import {
   Select,
   MenuItem,
   Button,
-  IconButton,
   Stack,
   TextField,
   Typography,
 } from "@mui/material";
+import { context } from "../../ContextProvider";
 
 const AddExpence = ({ setRelode }) => {
   const data = [];
@@ -85,8 +85,8 @@ const AddExpence = ({ setRelode }) => {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-          <Typography sx={{ color: "red", fontSize: "10px" }}>
-            Add Small Title
+          <Typography variant={"caption"} sx={{ color: "red", fontSize: "10px" }}>
+            {"Add Small Title"}
           </Typography>
           <TextField
             type="number"
