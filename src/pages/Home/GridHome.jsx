@@ -89,7 +89,7 @@ const GridHome = () => {
     return <HomeLoading />;
   }
   if(!isAuth){
-    return <Navigate to={"/login"}/></Navigate>
+    return <Navigate to={"/login"}/>
   }
 
   return (
