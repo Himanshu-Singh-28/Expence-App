@@ -15,6 +15,7 @@ import DeleteHandle from "../Delete/DeleteHandle";
 import ExpenseCard from "./Card/ExpenseCard";
 import { Add as AddIcon } from "@mui/icons-material";
 import Profile from "../Profile/Profile";
+import {Navigate} from "react-router-dom";
 
 const GridHome = () => {
   const [loadingCard, setLoadingCard] = useState(false);
@@ -86,6 +87,9 @@ const GridHome = () => {
   };
   if (loadingCard) {
     return <HomeLoading />;
+  }
+  if(!isAuth){
+    return <Navigate to={"/login"}/></Navigate>
   }
 
   return (
