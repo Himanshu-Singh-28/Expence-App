@@ -48,8 +48,7 @@ const ExpenseCard = ({
           <div
             className="badge"
             style={{
-              backgroundColor: "#2E7CCE",
-              opacity: isCompleted ? 0.5 : 1,
+              opacity: isCompleted ? 0.4 : 1,
             }}
           >
             {type == "Give" ? "Give" : "Take"}

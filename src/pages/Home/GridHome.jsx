@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { context } from "../../ContextProvider";
 import "./GridHome.css";
-import { Container, Grid, Typography, IconButton} from "@mui/material";
+import { Container, Grid, Typography, IconButton } from "@mui/material";
 import HomeLoading from "../Loading/HomeLoading";
 import axios from "axios";
 import { server } from "../../main";
@@ -15,6 +15,7 @@ import DeleteHandle from "../Delete/DeleteHandle";
 import ExpenseCard from "./Card/ExpenseCard";
 import { Add as AddIcon } from "@mui/icons-material";
 import Profile from "../Profile/Profile";
+import { Navigate } from "react-router-dom";
 
 const GridHome = () => {
   const [loadingCard, setLoadingCard] = useState(false);
@@ -25,11 +26,10 @@ const GridHome = () => {
     setClose,
     setactive,
     loading,
-    setLoading,
     addExpense,
     setAddExpense,
     editExpense,
-    openProfile
+    openProfile,
   } = useContext(context);
   const [reload, setReload] = useState(false);
   const [isDelete, setIsDelete] = useState(false);
@@ -54,36 +54,34 @@ const GridHome = () => {
       });
   }, [reload, isAuth]);
   const deleteHandler = (id) => {
-    setLoading(true);
     axios
       .delete(`${server}/expence/${id}`, { withCredentials: true })
       .then((res) => {
         toast.success(res.data.message, { duration: 1000 });
         setReload(!reload);
-        setLoading(false);
         setIsDelete(false);
       })
       .catch((error) => {
         toast(error.response.data.message, { duration: 1000 });
         setReload(!reload);
-        setLoading(false);
       });
   };
 
   const updateHandler = (id) => {
-    setLoading(true);
     axios
       .put(`${server}/expence/done/${id}`, {}, { withCredentials: true })
       .then((res) => {
         setReload(!reload);
-        setLoading(false);
       })
       .catch((error) => {
         console.log(error);
         setReload(!reload);
-        setLoading(false);
       });
   };
+  
+  if(!isAuth){
+    return <Navigate to="/login" />
+  }
   if (loadingCard) {
     return <HomeLoading />;
   }
@@ -112,7 +110,7 @@ const GridHome = () => {
         <div className="grid-container">
           <Grid container spacing={"1rem"} width={"80%"}>
             {task
-              .filter((val) => {
+              ?.filter((val) => {
                 if (searchelement == "") {
                   return val;
                 } else if (
@@ -123,7 +121,7 @@ const GridHome = () => {
                   return val;
                 }
               })
-              .map((i) => (
+              ?.map((i) => (
                 <ExpenseCard
                   key={i._id}
                   id={i._id}
@@ -158,7 +156,7 @@ const GridHome = () => {
       {addExpense && <AddExpence setRelode={setReload} />}
       {editExpense && <EditExpence setRelode={setReload} />}
       {loading && <Loading open={loading} />}
-      {openProfile && <Profile/>}
+      {openProfile && <Profile />}
       {isDelete && (
         <DeleteHandle
           isDelete={isDelete}

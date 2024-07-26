@@ -26,8 +26,8 @@ const UserAvtar = ({ logoutHandler }) => {
         aria-expanded={open ? "true" : undefined}
       >
         <Avatar
-          src={user.profile ? user.profile : ""}
-          alt={user.name[0]}
+          src={user?.profile ? user?.profile : ""}
+          alt={user?.name}
           sx={{ width: 32, height: 32 }}
         />
       </IconButton>
@@ -74,7 +74,7 @@ const UserAvtar = ({ logoutHandler }) => {
           }}
         >
           <IconButton>
-            <Avatar src={user.profile ? user.profile : ""} alt={user.name[0]} />
+            <Avatar src={user?.profile ? user?.profile : ""} alt={user?.name} />
           </IconButton>
           Profile
         </MenuItem>

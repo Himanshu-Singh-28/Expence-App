@@ -20,7 +20,7 @@ const Header = () => {
     setactive,
     setAddExpense,
   } = useContext(context);
-  const person = user.name;
+  const person = user?.name;
 
   const navMenu = () => {
     active === "Link" ? setactive("Link nav-menu-activate") : setactive("Link");
@@ -34,8 +34,8 @@ const Header = () => {
       .get(`${server}/user/logout`, { withCredentials: true })
       .then((res) => {
         setIsAuth(false);
-        toast.success(res.data.message, { duration: 1000 });
-        toast(`Visit Again ${person}`, { duration: 1000 });
+        toast.success(res.data.message, { duration: 5000 });
+        toast(`Visit Again ${person}`, { duration: 5000 });
       })
       .catch((error) => {
         setIsAuth(true);

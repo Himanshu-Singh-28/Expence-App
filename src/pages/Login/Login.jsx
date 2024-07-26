@@ -26,8 +26,8 @@ const Login = () => {
       );
       if (data.success) {
         setIsAuth(true);
-        toast.success(data.message, { duration: 500 });
-        toast(`Welcome Back ${user.name}`, { duration: 1000 });
+        toast.success(data.message, { duration: 3000 });
+        toast(`Welcome Back ${user.name}`, { duration: 3000 });
       } else {
         toast.error(data.message);
         setIsAuth(false);
@@ -47,7 +47,6 @@ const Login = () => {
   if (isAuth) {
     return <Navigate to="/"></Navigate>;
   }
-
   return (
     <div
       className="loginbox-container"
