@@ -86,9 +86,6 @@ const GridHome = () => {
   if (loadingCard) {
     return <HomeLoading />;
   }
-  if(!isAuth){
-    return <Navigate to={"/login"}/>
-  }
 
   return (
     <div
